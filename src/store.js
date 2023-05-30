@@ -1,9 +1,11 @@
 import { applyMiddleware, combineReducers, createStore, compose } from "redux";
 import thunkMiddleware from "redux-thunk";
 import charactersReducer from "./reducer/charactersReducer";
+import episodesReducer from "./reducer/episodesReducer";
 
 let reducers = combineReducers({
   charactersPage: charactersReducer,
+  episodesPage: episodesReducer,
 });
 
 let store = createStore(

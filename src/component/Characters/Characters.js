@@ -2,6 +2,7 @@ import "../../App.css";
 import React, { Component, useEffect } from "react";
 import { connect } from "react-redux";
 import { getCharactersThunk } from "../../reducer/charactersReducer";
+import { getEpisodesThunk } from "../../reducer/episodesReducer";
 import { ReactComponent as RickCharacters } from "../../pictures/rick-characters.svg";
 // import { getCharacters } from "../../API/axios";
 
@@ -9,9 +10,10 @@ function Characters(props) {
   useEffect(() => {
     props.getCharactersThunk();
   }, []);
+
   return (
     <div className="characters">
-      {console.log(props.characters)}
+      {console.log(props.episodes)}
       <RickCharacters className="rick_characters_picture"></RickCharacters>
       <div className="card_div">
         {props.characters.results !== undefined ? (
@@ -45,8 +47,14 @@ function Characters(props) {
                       <p>{item.location.name}</p>
                     </div>
                     <div>
-                      <label>Origin:</label>
-                      <p>{item.origin.name}</p>
+                      <label>First seen in:</label>
+                      {props.episodes.map((episode) => {
+                        return episode.id === item.id ? (
+                          <p>{episode.episode.name}</p>
+                        ) : (
+                          <></>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -63,6 +71,10 @@ function Characters(props) {
 let mapStateToProps = (state) => {
   return {
     characters: state.charactersPage.characters,
+    episodes: state.episodesPage.episodes,
   };
 };
-export default connect(mapStateToProps, { getCharactersThunk })(Characters);
+export default connect(mapStateToProps, {
+  getCharactersThunk,
+  getEpisodesThunk,
+})(Characters);
