@@ -21,8 +21,8 @@ let base = axios.create(defaultOp);
 //   return config;
 // });
 
-export const getCharacters = () => {
-  return baseRout.get(`/character/`).then((response) => {
+export const getCharacters = (page) => {
+  return baseRout.get(`/character/?page=${page}`).then((response) => {
     return response.data;
   });
 };

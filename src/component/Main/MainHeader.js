@@ -9,25 +9,22 @@ function MainHeader() {
       <header>
         <div className="header">
           <nav className="header_nav">
-            <Link className="header_a" to="/rick_and_morty/main">
+            <Link className="header_a" to="/RickAndMorty/">
               <Logo className="logo"></Logo>
             </Link>
             <ul className="header_ul">
               <li>
-                <Link
-                  className="header_li_link"
-                  to="/rick_and_morty/characters"
-                >
+                <Link className="header_li_link" to="/RickAndMorty/characters">
                   Characters
                 </Link>
               </li>
               <li>
-                <Link className="header_li_link" to="/rick_and_morty/locations">
+                <Link className="header_li_link" to="/RickAndMorty/locations">
                   Locations
                 </Link>
               </li>
               <li>
-                <Link className="header_li_link" to="/rick_and_morty/episodes">
+                <Link className="header_li_link" to="/RickAndMorty/episodes">
                   Episodes
                 </Link>
               </li>

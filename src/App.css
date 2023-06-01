@@ -16,6 +16,7 @@
   flex-wrap: wrap;
   width: 67%;
   margin-left: 33%;
+  margin-bottom: 60px;
 }
 .card {
   height: 220px;
@@ -144,9 +145,8 @@ body {
   border-top-left-radius: 7px;
 }
 .rick_characters_picture {
-  height: calc(100vh - 60px);
-  width: 33%;
-  position: fixed;
+  height: 100%;
+  width: 100%;
 }
 .card_name_character {
   color: white;
@@ -195,4 +195,68 @@ body {
 }
 .card_info {
   width: 100%;
+}
+/* PAGINATION */
+.pagination {
+  height: 45px;
+  list-style: none;
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  grid-gap: 5px;
+  gap: 12px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  margin-left: 30px;
+}
+.pagination_block {
+  margin-top: 50px;
+  margin-left: 45px;
+  display: flex;
+  justify-content: space-between;
+}
+.pagination .active {
+  background-color: #434c63;
+  color: #fff;
+}
+.page-num {
+  color: #495471;
+  width: 45px;
+  height: 45px;
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+  border: 1px solid #ebebeb;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+.pagination .page-num {
+  /* padding: 11px 17.5px; */
+  cursor: pointer;
+  border-radius: 3px;
+  font-weight: 400;
+}
+.pagination .page-num:hover {
+  background-color: #434c63;
+  color: #fff;
+}
+.block_for_page_num {
+  height: 45px;
+  width: 45px;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+/*  */
+.pagination_wih_pic {
+  width: 33%;
+  position: fixed;
 }

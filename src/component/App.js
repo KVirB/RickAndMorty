@@ -8,9 +8,9 @@ import Layout from "./Layout/Layout.js";
 const App = () => {
   return (
     <Routes>
-      <Route path="/rick_and_morty" element={<Layout />}>
-        <Route path="/rick_and_morty/main" element={<Main />} />
-        <Route path="/rick_and_morty/characters" element={<Characters />} />
+      <Route path="/RickAndMorty/" element={<Layout />}>
+        <Route path="/RickAndMorty/" element={<Main />} />
+        <Route path="/RickAndMorty/characters" element={<Characters />} />
       </Route>
     </Routes>
   );

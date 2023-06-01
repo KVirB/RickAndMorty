@@ -1,5 +1,5 @@
-import { getCharacters, getEpisodes } from "../API/axios";
-import { getEpisodesThunk, setEpisodes } from "../reducer/episodesReducer";
+import { getCharacters } from "../API/axios";
+import { getEpisodesThunk, clearEpisodes } from "../reducer/episodesReducer";
 
 const SET_CHARACTERS = "SET_CHARACTERS";
 
@@ -24,10 +24,11 @@ export const setCharacters = (characters) => ({
   characters: characters,
 });
 
-export const getCharactersThunk = () => {
+export const getCharactersThunk = (page) => {
   return (dispatch) => {
-    getCharacters().then((data) => {
+    getCharacters(page).then((data) => {
       dispatch(setCharacters(data));
+      dispatch(clearEpisodes());
       data.results.forEach((result) => {
         dispatch(getEpisodesThunk(result.episode[0], result.id));
       });

@@ -1,20 +1,49 @@
 import "../../App.css";
-import React, { Component, useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
 import { connect } from "react-redux";
 import { getCharactersThunk } from "../../reducer/charactersReducer";
-import { getEpisodesThunk } from "../../reducer/episodesReducer";
+import { getEpisodesThunk, clearEpisodes } from "../../reducer/episodesReducer";
 import { ReactComponent as RickCharacters } from "../../pictures/rick-characters.svg";
 // import { getCharacters } from "../../API/axios";
 
 function Characters(props) {
+  const { getCharactersThunk } = props;
   useEffect(() => {
-    props.getCharactersThunk();
+    getCharactersThunk(1);
   }, []);
+  const [forcePage, setForcePage] = useState(null);
+  const handlePageClick = (event) => {
+    setForcePage(event.selected);
+    getCharactersThunk(event.selected + 1);
+  };
 
   return (
     <div className="characters">
-      {console.log(props.episodes)}
-      <RickCharacters className="rick_characters_picture"></RickCharacters>
+      <div className="pagination_wih_pic">
+        <ReactPaginate
+          breakLabel="..."
+          nextLabel=">>>"
+          onPageChange={handlePageClick}
+          pageRangeDisplayed={1}
+          marginPagesDisplayed={1}
+          pageCount={
+            props.characters.info !== undefined
+              ? props.characters.info.pages
+              : 0
+          }
+          previousLabel="<<<"
+          forcePage={forcePage}
+          renderOnZeroPageCount={null}
+          containerClassName="pagination"
+          pageLinkClassName="page-num"
+          previousLinkClassName="page-num"
+          nextLinkClassName="page-num"
+          activeLinkClassName="active"
+          pageClassName="block_for_page_num"
+        />
+        <RickCharacters className="rick_characters_picture"></RickCharacters>
+      </div>
       <div className="card_div">
         {props.characters.results !== undefined ? (
           props.characters.results.map((item) => {
@@ -77,4 +106,5 @@ let mapStateToProps = (state) => {
 export default connect(mapStateToProps, {
   getCharactersThunk,
   getEpisodesThunk,
+  clearEpisodes,
 })(Characters);
